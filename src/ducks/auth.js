@@ -73,7 +73,6 @@ export function signIn({ email, password }) {
       payload: user
     })
     } catch(error) {
-      console.log(error);
       dispatch({
         type: SIGN_IN_ERROR,
         error

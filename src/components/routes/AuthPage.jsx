@@ -18,6 +18,7 @@ function AuthPage({ signUp, signIn, errorMessage, loading }) {
         <NavLink to='/auth/signin'>sign in</NavLink>
         <NavLink to='/auth/signup'>sign up</NavLink>
         <NavLink to='/admin'>Admin</NavLink>
+        <NavLink to='/person'>Add person</NavLink>
 
         <Route exact path='/auth/signin' render={() => <SignInForm onSubmit={handleSignIn} errorMessage={errorMessage}/>}/>
         <Route exact path='/auth/signup' render={() => <SignUpForm onSubmit={handleSignUp} errorMessage={errorMessage}/>}/>

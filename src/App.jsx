@@ -3,6 +3,7 @@ import store, { history } from './redux'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import { Switch } from 'react-router'
+import './config'
 
 import Root from './components/Root'
 

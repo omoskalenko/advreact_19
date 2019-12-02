@@ -5,14 +5,12 @@ export default function ErrorField({
   type,
   meta:  { touched, error, warning }
 }) {
-  console.log(error, touched);
-
   const errorText = touched && error && <div style={{color: 'tomato'}} >{error} </div>
   return (
-    <>
-      <label>{ input.name }</label>
+    <div>
+      {/* <label>{ input.name }</label> */}
       <input { ...input } type={type} />
       {errorText}
-    </>
+    </div>
   );
 }

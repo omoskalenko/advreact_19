@@ -4,7 +4,10 @@
   "private": true,
   "dependencies": {
     "connected-react-router": "^6.6.1",
+    "firebase": "^7.5.0",
     "history": "^4.10.1",
+    "immutable": "^4.0.0-rc.12",
+    "imutable": "^0.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-redux": "^7.1.3",

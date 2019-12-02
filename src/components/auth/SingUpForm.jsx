@@ -1,14 +1,16 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form'
 import validator  from 'validator'
-import ErrorField from './ErrorField'
+import ErrorField from '../common/ErrorField'
 
 function SignUpForm({
-  handleSubmit
+  handleSubmit,
+  errorMessage,
 }) {
   return (
     <>
     <h1>Sign Up</h1>
+    {errorMessage && <div style={{color: 'tomato'}} >{errorMessage}</div>}
     <form onSubmit={handleSubmit}>
     <div>
         <label htmlFor="email">Email</label>
@@ -33,10 +35,14 @@ const validate = ({ email, password }) => {
   if(!email) errors.email = 'Email is required'
   else if (!validator.isEmail(email)) errors.email = 'Invalid Email'
 
-  if(!password) errors.password = 'Password is required'
-  else if (!validator.isAlphanumeric(password)) errors.email = 'Invalid Password'
-  else if (password.lenght < 8) errors.email = 'Min 8'
 
+  if(!password) errors.password = 'Password is required'
+
+  else if (password.lenght < 6) {
+    console.log(password.lenght)
+    errors.email = 'Password should be at least 6 characters'
+
+  }
   return errors
 }
 

@@ -1,14 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
-import ErrorField from './ErrorField'
+import ErrorField from '../common/ErrorField'
 import validator  from 'validator'
 
+import { compose } from 'redux'
+
 function SignInForm({
-  handleSubmit
+  handleSubmit,
+  errorMessage,
 }) {
   return (
     <>
     <h1>Sign In</h1>
+    {errorMessage && <div style={{color: 'tomato'}} >{errorMessage} </div>}
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="email">Email</label>
@@ -38,7 +43,12 @@ const validate = ({ email, password }) => {
   return errors
 }
 
-export default reduxForm({
-  form: 'auth',
-  validate
-})(SignInForm)
+export default compose(
+  reduxForm({
+    form: 'auth',
+    validate
+  }),
+  connect(
+    (state) => ({})
+  )
+)(SignInForm)

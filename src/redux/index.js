@@ -4,8 +4,12 @@ import createRootReducer from './reducer'
 import thunk from 'redux-thunk'
 import { routerMiddleware } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
+import createSagaMiddleware from 'redux-saga'
+import { saga } from '../ducks/people'
 
 export const history = createBrowserHistory()
+
+const sagaMiddleware = createSagaMiddleware()
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -17,6 +21,7 @@ const store = createStore(
   createRootReducer(history),
   composeEnhancers(
     applyMiddleware(
+      sagaMiddleware,
       routerMiddleware(history),
       thunk,
     )
@@ -24,5 +29,7 @@ const store = createStore(
 )
 
 window.store = store
+
+sagaMiddleware.run(saga)
 
 export default store

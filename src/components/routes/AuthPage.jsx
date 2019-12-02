@@ -1,13 +1,22 @@
 import React from 'react'
-import SigninForm from '../auth/SigninForm'
+import { NavLink, Route } from 'react-router-dom'
 
-export default function AdminPage() {
-  const submit = value => console.log(value);
+import SignInForm from '../auth/SignInForm'
+import SignUpForm from '../auth/SingUpForm'
+
+export default function AuthPage() {
+  const handleSignIn = value => console.log(value);
+  const handleSignUp = value => console.log(value);
 
   return (
     <main id="auth">
       <h1>Auth Page</h1>
-       <SigninForm onSubmit={submit}/>
+        <NavLink to='/auth/signin'>sign in</NavLink>
+        <NavLink to='/auth/signup'>sign up</NavLink>
+
+        <Route exact path='/auth/signin' render={() => <SignInForm onSubmit={handleSignIn}/>}/>
+        <Route exact path='/auth/signup' render={() => <SignUpForm onSubmit={handleSignUp}/>}/>
+
     </main>
   );
 }

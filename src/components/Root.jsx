@@ -7,7 +7,7 @@ import AdminPage from './routes/AdminPage'
 export default function Root() {
   return (
     <>
-      <Route exact path='/auth' component={AuthPage}/>
+      <Route path='/auth' component={AuthPage}/>
       <Route exact path='/admin' component={AdminPage}/>
     </>
   );

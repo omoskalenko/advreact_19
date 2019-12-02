@@ -50,7 +50,6 @@ export function signUp({ email, password }) {
     dispatch({ type: SIGN_UP_REQUEST })
     try {
      const user = await firebase.auth().createUserWithEmailAndPassword(email, password)
-
      dispatch({
       type: SIGN_UP_SUCCESS,
       payload: user
@@ -65,15 +64,10 @@ export function signUp({ email, password }) {
 }
 
 export function signIn({ email, password }) {
-  console.log( email, password);
-
   return async (dispatch) => {
     dispatch({ type: SIGN_IN_REQUEST })
-
     try {
      const user = await firebase.auth().signInWithEmailAndPassword(email, password)
-      console.log(user);
-
      dispatch({
       type: SIGN_IN_SUCCESS,
       payload: user
@@ -87,3 +81,11 @@ export function signIn({ email, password }) {
     }
   }
 }
+
+firebase.auth().onAuthStateChanged(user => {
+  const store = require('../redux').default
+  store.dispatch({
+    type: SIGN_IN_SUCCESS,
+    payload: user
+  })
+})

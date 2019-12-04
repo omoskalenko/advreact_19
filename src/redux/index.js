@@ -5,7 +5,7 @@ import thunk from 'redux-thunk'
 import { routerMiddleware } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
 import createSagaMiddleware from 'redux-saga'
-import { saga } from '../ducks/people'
+import rootSaga from './saga'
 
 export const history = createBrowserHistory()
 
@@ -30,6 +30,6 @@ const store = createStore(
 
 window.store = store
 
-sagaMiddleware.run(saga)
+sagaMiddleware.run(rootSaga)
 
 export default store
